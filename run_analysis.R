@@ -36,11 +36,11 @@ run_analysis<-function()
   names(DataSet)<-c(c("Subject","Label"),Features[,"Name"])
   
   #search for the mean and std features
-  meanAndstdFeatures<-grep("*mean*|*std*", Features[,2],ignore.case = TRUE)
+  meanAndstdFeatures<-grep("*mean*|*std*", Features[,2],ignore.case = TRUE,value=TRUE)
 
   #create a verctor to hold the required variables 
   #and intilized by the first two variables\features(subject,activiy)
-  targetVariables<-c(c("Subject","Label"),Features[meanAndstdFeatures,2])
+  targetVariables<-c(c("Subject","Label"),meanAndstdFeatures)
   
   #Clean all of the non-desired variables\features
   DataSet<-DataSet[,targetVariables]
